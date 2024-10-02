@@ -1,7 +1,16 @@
 {
   "name": "@orensayag/logger",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Logging methods",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -20,5 +29,9 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
   }
 }
