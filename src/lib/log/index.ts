@@ -20,14 +20,33 @@ const colorPalette = {
   SUCCESS: chalk.green,
 } as const;
 
+const colorPaletteBrowser = {
+  VERBOSE: '#00FFFF',
+  ERROR: '#ff000d',
+  INFO: '#FFFF00',
+  SUCCESS: '#00FF00',
+} as const;
+
 type LogType = keyof typeof colorPalette;
 
 export const log = ({ message, output, logType = 'VERBOSE' }: Input) => {
   function _log({ message }: { message: unknown }) {
     if (output.console) {
+
+      const isBrowser = typeof window !== 'undefined';
+
+
       if (typeof message === 'string') {
+        if(isBrowser) {
+          console.log(`%c${message}`, `color: #${colorPaletteBrowser[logType]};`);
+          return;
+        }
         console.log(colorPalette[logType](message));
       } else {
+        if(isBrowser) {
+          console.log(`%c${JSON.stringify(message, null, 2)}`, `color: #${colorPaletteBrowser[logType]};`);
+          return;
+        }
         console.log(colorPalette[logType](JSON.stringify(message, null, 2)));
       }
     }

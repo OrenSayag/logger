@@ -1,6 +1,6 @@
 {
   "name": "@orensayag/logger",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Logging methods",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
